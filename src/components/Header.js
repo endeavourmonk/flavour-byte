@@ -4,14 +4,21 @@ const Header = () => {
   console.log("header");
   return (
     <header className="header">
-      <h1 className="title">Food Ordering Website</h1>
+      <Link to="/">
+        <img
+          className="logo"
+          alt="logo"
+          src="https://res.cloudinary.com/cloudimagestore-/image/upload/f_auto,q_auto/v1/Assets/n4ib35lo32o8p7hxizrm"
+        />
+      </Link>
+
       <nav className="nav">
         <ul className="nav-list">
           <li className="nav-item">
             <Link to="/">Home</Link>
           </li>
           <li className="nav-item">
-            <Link to="/menu">Menu</Link>
+            <Link to="/menu">Offers</Link>
           </li>
           <li className="nav-item">
             <Link to="/about">About</Link>

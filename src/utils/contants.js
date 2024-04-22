@@ -6,7 +6,7 @@ export const RATING_STAR =
 
 export const SWIGGY_API = "https://www.swiggy.com/dapi/restaurants/list/v5";
 export const SWIGGY_RESTAURANT_MENU =
-  "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.59080&lng=85.13480&restaurantId=725082&catalog_qa=undefined&isMenuUx4=true&submitAction=ENTER";
+  "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.59080&lng=85.13480&restaurantId=";
 export const SWIGGY_UPDATE_API =
   "https://www.swiggy.com/dapi/restaurants/list/update";
 

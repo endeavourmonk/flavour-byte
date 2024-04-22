@@ -139,7 +139,7 @@ const Body = () => {
   return (
     <>
       <div className="restaurant-filters">
-        <button className="filter-button" onClick={handleFilterClick}>
+        <button className="button" onClick={handleFilterClick}>
           Top Rated
         </button>
         <div className="search-bar">
@@ -154,7 +154,7 @@ const Body = () => {
             }}
             placeholder="Search Restaurants..."
           />
-          <button className="search-button" onClick={handleSearchButtonClick}>
+          <button className="button" onClick={handleSearchButtonClick}>
             Search
           </button>
         </div>

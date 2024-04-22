@@ -1,16 +1,25 @@
 body {
   font-family: "Helvetica", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Header */
 .header {
-  background-color: #f8f9fa;
-  padding: 20px;
-  text-align: center;
+  padding: 2px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 15px 40px -20px rgba(40, 44, 63, 0.15);
+}
+
+.logo {
+  width: 50px;
 }
 
 .title {
-  font-size: 2em;
+  font-size: 24px;
   color: #343a40;
 }
 
@@ -26,6 +35,10 @@ body {
 .nav-item {
   display: inline-block;
   margin-right: 10px;
+}
+
+.nav-item:hover {
+  color: orange;
 }
 
 .nav-item a {
@@ -66,21 +79,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
   margin-bottom: 20px;
-}
-
-.filter-button {
-  background-color: #f0f0f0;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.filter-button:hover {
-  background-color: #e0e0e0;
 }
 
 .search-bar {
@@ -89,19 +88,21 @@ body {
 }
 
 .search-bar input[type="text"] {
-  border: 1px solid #ccc;
-  border-radius: 4px;
   padding: 10px;
   margin-right: 10px;
 }
 
-.search-button {
+.button {
   background-color: #007bff;
   color: #fff;
   border: none;
   padding: 10px 15px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.button:hover {
+  background-color: #28377d;
 }
 
 a {
@@ -235,4 +236,30 @@ a {
   flex-direction: column;
   margin: 2px;
   height: 18px;
+}
+
+/* Error  */
+.error-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.error-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.error-message,
+.error-code {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.error-code {
+  color: #f00;
 }

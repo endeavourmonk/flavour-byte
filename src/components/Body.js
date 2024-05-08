@@ -1,8 +1,9 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import RestaurantCard from "./RestaurantCard";
 import ShimmerRestaurantCard from "./Shimmer";
-import { useEffect, useState } from "react";
 import { IP_BASE_API, SWIGGY_API, SWIGGY_UPDATE_API } from "../utils/contants";
-import { Link } from "react-router-dom";
+import replaceLatLonResId from "../utils/replaceLatLonResId";
 
 const fetchData = async (url) => {
   try {
@@ -32,12 +33,6 @@ const fetchUpdate = async (url, coordinates) => {
   return await response.json();
 };
 
-const getCurrentPosition = () => {
-  return new Promise((resolve, reject) => {
-    navigator.geolocation.getCurrentPosition(resolve, reject);
-  });
-};
-
 const Body = () => {
   const [loading, setLoading] = useState(true);
   const [restaurantsList, setRestaurantsList] = useState([]);
@@ -50,31 +45,18 @@ const Body = () => {
   useEffect(() => {
     (async () => {
       try {
-        let coordinates = [28.7041, 77.1025];
-        const permission = await navigator.permissions.query({
-          name: "geolocation",
-        });
-        if (permission.state === "granted") {
-          const position = await getCurrentPosition();
-          coordinates = [position.coords.latitude, position.coords.longitude];
-          console.log(position);
-        }
-        // else {
-        //   const data = await fetch(IP_BASE_API);
-        //   const position = await data?.json();
-        //   coordinates = [position.latitude, position.longitude];
-        //   console.log(position);
-        // }
-
-        const result = await fetchData(
-          `${SWIGGY_API}?lat=${coordinates[0]}&lng=${coordinates[1]}`
+        const SWIGGY_RESTAURANTS_API = replaceLatLonResId(
+          SWIGGY_API,
+          25.5908,
+          85.1348
         );
+        const result = await fetchData(SWIGGY_RESTAURANTS_API);
         setLoading(false);
         const restaurants =
           result?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle
             ?.restaurants ?? [];
 
-        console.log(restaurants);
+        console.log("restaurants: ", restaurants);
 
         // const updatedRestaurants = await fetchUpdate(
         //   SWIGGY_UPDATE_API,

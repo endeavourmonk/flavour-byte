@@ -264,6 +264,12 @@ a {
   color: #f00;
 }
 
+.error-gif {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 400px;
+}
 /* Restaurant Menu  */
 .restaurant-menu-container {
   width: 60%;

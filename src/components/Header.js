@@ -17,7 +17,7 @@ const Header = () => {
 
       <nav className="nav">
         <ul className="nav-list">
-          <li className="nav-item">{isOnline ? `Online` : `Offline`}</li>
+          <li className="nav-item">{isOnline ? `🟢` : `🔴`}</li>
           <li className="nav-item">
             <Link to="/">Home</Link>
           </li>

@@ -1,3 +1,6 @@
+export const lat = 25.5908;
+export const lon = 85.1348;
+
 export const IMG_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 

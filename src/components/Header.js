@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
+  const isOnline = useOnlineStatus();
   console.log("header");
+
   return (
     <header className="header">
       <Link to="/">
@@ -14,6 +17,7 @@ const Header = () => {
 
       <nav className="nav">
         <ul className="nav-list">
+          <li className="nav-item">{isOnline ? `Online` : `Offline`}</li>
           <li className="nav-item">
             <Link to="/">Home</Link>
           </li>

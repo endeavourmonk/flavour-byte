@@ -2,7 +2,13 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import RestaurantCard from "./RestaurantCard";
 import ShimmerRestaurantCard from "./Shimmer";
-import { IP_BASE_API, SWIGGY_API, SWIGGY_UPDATE_API } from "../utils/contants";
+import {
+  IP_BASE_API,
+  SWIGGY_API,
+  SWIGGY_UPDATE_API,
+  lat,
+  lon,
+} from "../utils/contants";
 import replaceLatLonResId from "../utils/replaceLatLonResId";
 
 const fetchData = async (url) => {
@@ -45,11 +51,7 @@ const Body = () => {
   useEffect(() => {
     (async () => {
       try {
-        const SWIGGY_RESTAURANTS_API = replaceLatLonResId(
-          SWIGGY_API,
-          25.5908,
-          85.1348
-        );
+        const SWIGGY_RESTAURANTS_API = replaceLatLonResId(SWIGGY_API, lat, lon);
         const result = await fetchData(SWIGGY_RESTAURANTS_API);
         setLoading(false);
         const restaurants =
@@ -108,11 +110,11 @@ const Body = () => {
     return (
       <div className="body-container">
         <div className="cards-container">
-          <ShimmerRestaurantCard />
-          <ShimmerRestaurantCard />
-          <ShimmerRestaurantCard />
-          <ShimmerRestaurantCard />
-          <ShimmerRestaurantCard />
+          {Array(5)
+            .fill()
+            .map((_, i) => (
+              <ShimmerRestaurantCard key={i} />
+            ))}
         </div>
       </div>
     );

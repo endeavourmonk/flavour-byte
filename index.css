@@ -265,19 +265,28 @@ a {
 }
 
 /* Restaurant Menu  */
-.menu-category {
+.restaurant-menu-container {
   width: 60%;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-category {
+  width: 100%;
   border-bottom: 4px solid #ddd;
   border-radius: 5px;
   padding: 10px;
   cursor: pointer;
 }
 
-.menu-category h3 {
+.menu-category-accordian-title {
   color: #333;
-  font-size: 1.2em;
-  margin-bottom: 10px;
+  /* font-size: 1em; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* menu-item */

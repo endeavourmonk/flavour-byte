@@ -17,6 +17,7 @@ const RestaurantMenuItem = (props) => {
       </div>
       <div className="menu-item-img-container">
         <img alt="menu" src={`${IMG_URL}${imageId}`} />
+        {console.log(name + "--" + imageId)}
       </div>
     </div>
   );

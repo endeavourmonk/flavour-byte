@@ -1,49 +1,39 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { SWIGGY_RESTAURANT_MENU } from "../utils/contants";
-import replaceLatLonResId from "../utils/replaceLatLonResId";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 import RestaurantMenuItem from "./RestaurantMenuItem";
+import upArrow from "../assets/up-arrow.svg";
+import downArrow from "../assets/down-arrow.svg";
 
 const RestaurantMenu = () => {
-  const [menu, setMenu] = useState([]);
-  const [openCategory, setOpenCategory] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [openCategory, setOpenCategory] = useState(0);
 
   const { resId } = useParams();
+  const data = useRestaurantMenu(resId);
+  const restaurantMenu = data?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+  const menu = restaurantMenu?.slice(1, restaurantMenu.length - 2);
+  const name = data?.[2]?.card?.card?.info?.name ?? "";
 
-  const fetchMenu = async () => {
-    try {
-      const SWIGGY_RESTAURANT_MENU_API = replaceLatLonResId(
-        SWIGGY_RESTAURANT_MENU,
-        25.5908,
-        85.1348,
-        resId
-      );
-      const data = await fetch(SWIGGY_RESTAURANT_MENU_API);
-      const result = await data.json();
-      const restaurantMenu =
-        result?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-      console.log("restaurantMenu", restaurantMenu);
-      setMenu(restaurantMenu.slice(1, restaurantMenu.length - 2));
-      setLoading(false);
-    } catch (error) {
-      console.error(error);
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchMenu();
-  }, []);
+  console.log(menu);
 
   const Menu = menu?.map((category, index) => (
-    <div key={index} className="menu-category">
-      <h3
+    <div key={index}>
+      <div
         onClick={() => setOpenCategory(index === openCategory ? null : index)}
+        className="menu-category-accordian-title"
       >
-        {category?.card?.card?.title} ({category?.card?.card?.itemCards?.length}
-        )
-      </h3>
+        <h3>
+          {category?.card?.card?.title} (
+          {category?.card?.card?.itemCards?.length})
+        </h3>
+        <div>
+          {index === openCategory ? (
+            <img alt="up-arrow" src={upArrow} />
+          ) : (
+            <img alt="down-arrow" src={downArrow} />
+          )}
+        </div>
+      </div>
       {index === openCategory && (
         <div className="menu-items">
           {category?.card?.card?.itemCards?.map((item) => (
@@ -56,11 +46,13 @@ const RestaurantMenu = () => {
       )}
     </div>
   ));
-  console.log("rendering");
+
+  if (!menu) return <div>Loading...</div>;
   return (
-    <div>
+    <div className="restaurant-menu-container">
+      <h1>{name}</h1>
       <h2>Menu</h2>
-      <div>{Menu}</div>
+      <div className="menu-category">{Menu}</div>
     </div>
   );
 };

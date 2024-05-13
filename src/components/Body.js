@@ -52,7 +52,9 @@ const Body = () => {
     (async () => {
       try {
         const SWIGGY_RESTAURANTS_API = replaceLatLonResId(SWIGGY_API, lat, lon);
-        const result = await fetchData(SWIGGY_RESTAURANTS_API);
+        const result = await fetchData(
+          `https://corsproxy.io/?` + SWIGGY_RESTAURANTS_API
+        );
         setLoading(false);
         const restaurants =
           result?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle

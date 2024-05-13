@@ -106,27 +106,16 @@ const Body = () => {
     setFilteredRestaurants(filteredRestaurants);
   };
 
-  if (loading) {
-    return (
-      <div className="body-container">
-        <div className="cards-container">
-          {Array(5)
-            .fill()
-            .map((_, i) => (
-              <ShimmerRestaurantCard key={i} />
-            ))}
-        </div>
-      </div>
-    );
-  }
-
   return (
     <>
-      <div className="restaurant-filters">
-        <button className="button" onClick={handleFilterClick}>
+      <div className="flex flex-col md:flex-row justify-between items-center p-4 mb-5">
+        <button
+          className="bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-700 mb-4 md:mb-0"
+          onClick={handleFilterClick}
+        >
           Top Rated
         </button>
-        <div className="search-bar">
+        <div className="flex items-center">
           <input
             type="text"
             value={searchText}
@@ -137,17 +126,35 @@ const Body = () => {
               }
             }}
             placeholder="Search Restaurants..."
+            className="p-2 mr-2 hover:border-b"
           />
-          <button className="button" onClick={handleSearchButtonClick}>
+          <button
+            className="bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-700"
+            onClick={handleSearchButtonClick}
+          >
             Search
           </button>
         </div>
       </div>
 
-      <div className="body-container" onScroll={() => console.log("scrolled")}>
-        <h2>{place}</h2>
-        <div className="cards-container">{RestaurantCards}</div>
-      </div>
+      {loading ? (
+        <div className="w-4/5 mx-auto">
+          <div className="grid grid-cols-4 gap-8 items-start">
+            {Array(5)
+              .fill()
+              .map((_, i) => (
+                <ShimmerRestaurantCard key={i} />
+              ))}
+          </div>
+        </div>
+      ) : (
+        <div className="w-4/5 mx-auto overflow-auto">
+          <h2 className="text-3xl font-light mb-2">{place}</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 items-start">
+            {RestaurantCards}
+          </div>
+        </div>
+      )}
     </>
   );
 };

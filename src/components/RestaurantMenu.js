@@ -4,6 +4,7 @@ import useRestaurantMenu from "../utils/useRestaurantMenu";
 import RestaurantMenuItem from "./RestaurantMenuItem";
 import upArrow from "../assets/up-arrow.svg";
 import downArrow from "../assets/down-arrow.svg";
+import Loading from "./Loading";
 
 const RestaurantMenu = () => {
   const [openCategory, setOpenCategory] = useState(0);
@@ -14,15 +15,13 @@ const RestaurantMenu = () => {
   const menu = restaurantMenu?.slice(1, restaurantMenu.length - 2);
   const name = data?.[2]?.card?.card?.info?.name ?? "";
 
-  console.log(menu);
-
   const Menu = menu?.map((category, index) => (
     <div key={index}>
       <div
         onClick={() => setOpenCategory(index === openCategory ? null : index)}
-        className="menu-category-accordian-title"
+        className="my-4 flex justify-between items-center text-gray-700 cursor-pointer"
       >
-        <h3>
+        <h3 className="py-2 text-lg md:text-xl font-medium">
           {category?.card?.card?.title} (
           {category?.card?.card?.itemCards?.length})
         </h3>
@@ -35,7 +34,7 @@ const RestaurantMenu = () => {
         </div>
       </div>
       {index === openCategory && (
-        <div className="menu-items">
+        <div>
           {category?.card?.card?.itemCards?.map((item) => (
             <RestaurantMenuItem
               key={item?.card?.info?.id}
@@ -47,12 +46,16 @@ const RestaurantMenu = () => {
     </div>
   ));
 
-  if (!menu) return <div>Loading...</div>;
+  if (!menu) return <Loading />;
   return (
-    <div className="restaurant-menu-container">
-      <h1>{name}</h1>
-      <h2>Menu</h2>
-      <div className="menu-category">{Menu}</div>
+    <div className="md:w-3/5 mt-4 mx-auto flex flex-col items-center">
+      <h1 className="text-2xl md:text-4xl font-bold">{name}</h1>
+      <h2 className="text-xl md:text-3xl font-extralight mt-6 border-b-4">
+        Menu
+      </h2>
+      <div className="w-full border-b-4 border-gray-300 rounded p-2 cursor-pointer">
+        {Menu}
+      </div>
     </div>
   );
 };

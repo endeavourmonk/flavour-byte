@@ -3,12 +3,15 @@ import { useState, useEffect } from "react";
 const useOnlineStatus = () => {
   const [isOnline, setisOnline] = useState(true);
   useEffect(() => {
-    window.addEventListener("online", () => setisOnline(true));
-    window.addEventListener("offline", () => setisOnline(false));
+    const goOnline = () => setisOnline(true);
+    const goOffline = () => setisOnline(false);
+
+    window.addEventListener("online", goOnline);
+    window.addEventListener("offline", goOffline);
 
     return () => {
-      window.addEventListener("online", () => setisOnline(true));
-      window.addEventListener("offline", () => setisOnline(false));
+      window.addEventListener("online", goOnline);
+      window.addEventListener("offline", goOffline);
     };
   }, []);
   return isOnline;

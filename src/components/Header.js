@@ -6,29 +6,49 @@ const Header = () => {
   console.log("header");
 
   return (
-    <header className="header">
+    <header className="h-16 p-1 px-6 flex justify-between items-center shadow-sm">
       <Link to="/">
         <img
-          className="logo"
+          className="w-12"
           alt="logo"
           src="https://res.cloudinary.com/cloudimagestore-/image/upload/f_auto,q_auto/v1/Assets/n4ib35lo32o8p7hxizrm"
         />
       </Link>
 
-      <nav className="nav">
-        <ul className="nav-list">
-          <li className="nav-item">{isOnline ? `🟢` : `🔴`}</li>
-          <li className="nav-item">
-            <Link to="/">Home</Link>
+      <nav className="mt-5">
+        <ul className="list-none p-0 text-lg font-semibold">
+          <li className="inline-block mr-2">{isOnline ? `🟢` : `🔴`}</li>
+          <li className="inline-block mr-2">
+            <Link
+              to="/"
+              className="text-gray-600 no-underline hover:text-orange-500"
+            >
+              Home
+            </Link>
           </li>
-          <li className="nav-item">
-            <Link to="/menu">Offers</Link>
+          <li className="inline-block mr-2">
+            <Link
+              to="/menu"
+              className="text-gray-600 no-underline hover:text-orange-500"
+            >
+              Offers
+            </Link>
           </li>
-          <li className="nav-item">
-            <Link to="/about">About</Link>
+          <li className="inline-block mr-2">
+            <Link
+              to="/about"
+              className="text-gray-600 no-underline hover:text-orange-500"
+            >
+              About
+            </Link>
           </li>
-          <li className="nav-item">
-            <Link to="/contact">Contact</Link>
+          <li className="inline-block mr-2">
+            <Link
+              to="/contact"
+              className="text-gray-600 no-underline hover:text-orange-500"
+            >
+              Contact
+            </Link>
           </li>
         </ul>
       </nav>

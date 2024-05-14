@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import RestaurantCard from "./RestaurantCard";
 import ShimmerRestaurantCard from "./Shimmer";
 import {
-  IP_BASE_API,
+  CORS_PROXY_API,
   SWIGGY_API,
   SWIGGY_UPDATE_API,
   lat,
@@ -13,7 +13,7 @@ import replaceLatLonResId from "../utils/replaceLatLonResId";
 
 const fetchData = async (url) => {
   try {
-    const response = await fetch(url);
+    const response = await fetch(`${CORS_PROXY_API}/fetch?${url}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -23,7 +23,7 @@ const fetchData = async (url) => {
 };
 
 const fetchUpdate = async (url, coordinates) => {
-  const response = await fetch(url, {
+  const response = await fetch(`${CORS_PROXY_API}/fetch?${url}`, {
     method: "POST",
     mode: "no-cors", // no-cors, *cors, same-origin
     cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -52,9 +52,7 @@ const Body = () => {
     (async () => {
       try {
         const SWIGGY_RESTAURANTS_API = replaceLatLonResId(SWIGGY_API, lat, lon);
-        const result = await fetchData(
-          `https://corsproxy.io/?` + SWIGGY_RESTAURANTS_API
-        );
+        const result = await fetchData(SWIGGY_RESTAURANTS_API);
         setLoading(false);
         const restaurants =
           result?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle

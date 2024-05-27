@@ -40,4 +40,21 @@ const RestaurantCard = (props) => {
   );
 };
 
+// Higher Order Component: takes a component and returns by adding some features to it.
+export const withDiscount = (RestaurantCard) => {
+  return (props) => {
+    const info = props.restaurant?.info?.aggregatedDiscountInfoV3 || {};
+    const discount = `${info?.header ?? ""} ${info?.subHeader ?? ""}`;
+
+    return (
+      <div className="relative ">
+        <div className="absolute font-extrabold text-white  bg-black bg-opacity-90 shadow-md text-center text-xl z-10 top-32 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 p-2 rounded">
+          {discount}
+        </div>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
+
 export default RestaurantCard;

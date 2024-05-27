@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withDiscount } from "./RestaurantCard";
 import ShimmerRestaurantCard from "./Shimmer";
+import replaceLatLonResId from "../utils/replaceLatLonResId";
 import {
   CORS_PROXY_API,
   SWIGGY_API,
@@ -9,7 +10,6 @@ import {
   lat,
   lon,
 } from "../utils/contants";
-import replaceLatLonResId from "../utils/replaceLatLonResId";
 
 const fetchData = async (url) => {
   try {
@@ -45,6 +45,8 @@ const Body = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [place, setPlace] = useState("");
+
+  const PromotedRestaurantCard = withDiscount(RestaurantCard);
 
   console.log("body");
 
@@ -86,7 +88,11 @@ const Body = () => {
         .replace(/\s/g, "-")
         .toLowerCase()}/${restaurant.info.id}`}
     >
-      <RestaurantCard restaurant={restaurant} />
+      {restaurant?.info?.aggregatedDiscountInfoV3 ? (
+        <PromotedRestaurantCard restaurant={restaurant} />
+      ) : (
+        <RestaurantCard restaurant={restaurant} />
+      )}
     </Link>
   ));
 

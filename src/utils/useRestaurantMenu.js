@@ -21,6 +21,7 @@ const useRestaurantMenu = (resId) => {
         `${CORS_PROXY_API}/fetch?${SWIGGY_RESTAURANT_MENU_API}`
       );
       const result = await data.json();
+      // console.log(result);
       setData(result?.data?.cards);
     } catch (error) {
       console.error(error);

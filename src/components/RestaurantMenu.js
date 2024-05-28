@@ -10,12 +10,17 @@ const RestaurantMenu = () => {
   const [openCategory, setOpenCategory] = useState(0);
 
   const { resId } = useParams();
-  const data = useRestaurantMenu(resId);
-  const restaurantMenu = data?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-  const menu = restaurantMenu?.slice(1, restaurantMenu.length - 2);
+  const data = useRestaurantMenu(resId); // fetching and setting data
   const name = data?.[2]?.card?.card?.info?.name ?? "";
+  const cards = data?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
 
-  const Menu = menu?.map((category, index) => (
+  const categories = cards?.filter(
+    (card) =>
+      card?.card?.card?.["@type"] ===
+      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+  );
+
+  const Menu = categories?.map((category, index) => (
     <div key={index}>
       <div
         onClick={() => setOpenCategory(index === openCategory ? null : index)}
@@ -46,7 +51,7 @@ const RestaurantMenu = () => {
     </div>
   ));
 
-  if (!menu) return <Loading />;
+  if (!categories) return <Loading />;
   return (
     <div className="md:w-3/5 mt-4 mx-auto flex flex-col items-center">
       <h1 className="text-2xl md:text-4xl font-bold">{name}</h1>

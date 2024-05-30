@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { StrictMode, Suspense, lazy } from "react";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 import ReactDOM from "react-dom/client";
@@ -13,10 +13,12 @@ const RestaurantMenu = lazy(() => import("./src/components/RestaurantMenu.js"));
 
 const AppLayout = () => {
   return (
-    <div>
-      <Header />
-      <Outlet />
-    </div>
+    <StrictMode>
+      <div>
+        <Header />
+        <Outlet />
+      </div>
+    </StrictMode>
   );
 };
 

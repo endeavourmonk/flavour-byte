@@ -9,7 +9,7 @@ import {
   SWIGGY_UPDATE_API,
   lat,
   lon,
-} from "../utils/contants";
+} from "../utils/constants";
 
 const fetchData = async (url) => {
   try {
@@ -48,8 +48,7 @@ const Body = () => {
 
   const PromotedRestaurantCard = withDiscount(RestaurantCard);
 
-  console.log("body");
-
+  // console.log("body");
   useEffect(() => {
     (async () => {
       try {
@@ -59,8 +58,6 @@ const Body = () => {
         const restaurants =
           result?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle
             ?.restaurants ?? [];
-
-        console.log("restaurants: ", restaurants);
 
         // const updatedRestaurants = await fetchUpdate(
         //   SWIGGY_UPDATE_API,
@@ -105,7 +102,6 @@ const Body = () => {
   };
 
   const handleSearchButtonClick = () => {
-    console.log("search");
     const filteredRestaurants = restaurantsList.filter((restaurant) =>
       restaurant.info.name.toLowerCase().includes(searchText.toLowerCase())
     );
@@ -144,8 +140,8 @@ const Body = () => {
       </div>
 
       {loading ? (
-        <div className="w-4/5 mx-auto">
-          <div className="grid grid-cols-4 gap-8 items-start">
+        <div className="w-4/5 mx-auto overflow-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 items-start">
             {Array(5)
               .fill()
               .map((_, i) => (

@@ -4,7 +4,7 @@ const ShimmerRestaurantCard = () => {
       <div className="w-full h-40 overflow-hidden rounded-lg bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200">
         <div className="h-full w-full" /> {/* Placeholder for image */}
       </div>
-      <div className="w-56 flex flex-col p-1 px-2 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200">
+      <div className="w-56 flex flex-col p-1 px-2 ">
         <div className="h-4 mt-2 mb-4 bg-gray-300" />
         {/* Placeholder for title */}
         <div className="flex flex-row items-center h-4 mb-2 bg-gray-300">

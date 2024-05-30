@@ -18,18 +18,24 @@ const RestaurantMenu = () => {
   const name = data?.[2]?.card?.card?.info?.name ?? "";
   const cards = data?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
 
-  const categories = cards?.filter(
-    (card) =>
-      card?.card?.card?.["@type"] ===
+  // extracting all the itemcategories and nested categories by flatenning 1 level depth
+  const categories = cards?.flatMap((data) => {
+    const category = data?.card?.card;
+    if (
+      category?.["@type"] ===
       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-  );
+    ) {
+      return [category];
+    } else if (
+      category?.["@type"] ===
+      "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
+    ) {
+      return category?.categories || [];
+    }
+    return [];
+  });
 
-  // const nestedCategories = cards?.filter(
-  //   (card) =>
-  //     card?.card?.card?.["@type"] ===
-  //     "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
-  // );
-
+  // console.log(categories);
   if (!categories) return <Loading />;
   return (
     <div className="md:w-3/5 mt-4 mx-auto flex flex-col items-center">
@@ -41,8 +47,8 @@ const RestaurantMenu = () => {
       <div className="w-full border-b-4 border-gray-300 rounded p-2 cursor-pointer">
         {categories?.map((category, index) => (
           <RestaurantCategoryCard
-            key={category?.card?.card?.title}
-            data={category?.card?.card}
+            key={category?.title}
+            data={category}
             isActive={openCategory === index}
             onShow={() => handleShow(index)}
           />

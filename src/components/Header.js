@@ -3,7 +3,6 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
   const isOnline = useOnlineStatus();
-  console.log("header");
 
   return (
     <header className="h-16 p-1 px-6 flex justify-between items-center shadow-sm">

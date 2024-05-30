@@ -1,4 +1,4 @@
-import { IMG_URL, RATING_STAR } from "../utils/contants";
+import { IMG_URL, RATING_STAR } from "../utils/constants";
 
 const RestaurantMenuItem = (props) => {
   const { name, price, defaultPrice, description, isVeg, imageId } =

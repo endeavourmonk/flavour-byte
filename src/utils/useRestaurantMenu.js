@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { CORS_PROXY_API, SWIGGY_RESTAURANT_MENU, lat, lon } from "./contants";
+import { CORS_PROXY_API, SWIGGY_RESTAURANT_MENU, lat, lon } from "./constants";
 import replaceLatLonResId from "./replaceLatLonResId";
 
 const useRestaurantMenu = (resId) => {

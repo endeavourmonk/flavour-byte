@@ -48,7 +48,7 @@ export const withDiscount = (RestaurantCard) => {
 
     return (
       <div className="relative ">
-        <div className="absolute font-extrabold text-white  bg-black bg-opacity-90 shadow-md text-center text-xl z-10 top-32 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 p-2 rounded">
+        <div className="absolute font-extrabold text-white  bg-black bg-opacity-90 shadow-md text-center text-xl z-10 top-32 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 p-2 rounded">
           {discount}
         </div>
         <RestaurantCard {...props} />

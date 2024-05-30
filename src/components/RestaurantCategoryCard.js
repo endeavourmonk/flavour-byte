@@ -4,10 +4,10 @@ import downArrow from "../assets/down-arrow.svg";
 
 export default function RestaurantCategoryCard({ data, isActive, onShow }) {
   return (
-    <div>
+    <div className="py-4 border-b-8 border-gray-200 last:border-b-0">
       <div
         onClick={onShow}
-        className="my-4 flex justify-between items-center text-gray-700 cursor-pointer"
+        className="flex justify-between items-center text-gray-700 cursor-pointer"
       >
         <h3 className="py-2 text-lg md:text-xl font-medium">
           {data?.title} ({data?.itemCards?.length})

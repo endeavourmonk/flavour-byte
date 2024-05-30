@@ -38,7 +38,7 @@ const RestaurantMenu = () => {
   // console.log(categories);
   if (!categories) return <Loading />;
   return (
-    <div className="md:w-3/5 mt-4 mx-auto flex flex-col items-center">
+    <div className="md:w-3/5 px-2 md:px-0 mt-4 mx-auto flex flex-col items-center">
       <h1 className="text-2xl md:text-4xl font-bold">{name}</h1>
       <h2 className="text-xl md:text-3xl font-extralight mt-6 border-b-4">
         Menu

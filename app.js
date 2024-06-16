@@ -17,9 +17,11 @@ const AppLayout = () => {
   return (
     <StrictMode>
       <Provider store={appStore}>
-        <div>
+        <div className="m-0 p-0">
           <Header />
-          <Outlet />
+          <div className="mt-20">
+            <Outlet />
+          </div>
         </div>
       </Provider>
     </StrictMode>

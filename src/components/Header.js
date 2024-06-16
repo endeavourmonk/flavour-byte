@@ -10,9 +10,10 @@ const Header = () => {
   const isOnline = useOnlineStatus();
   // subscribing to the store using selector
   const cartItemsCount = useSelector((store) => store.cart.length);
+  console.log(useSelector((store) => store.cart));
 
   return (
-    <header className="h-16 p-1 px-6 flex justify-between items-center shadow-sm">
+    <header className="h-16 p-1 px-6 flex justify-between items-center shadow-sm fixed w-full bg-white z-30 top-0 left-0">
       <Link to="/">
         <img
           className="w-12"

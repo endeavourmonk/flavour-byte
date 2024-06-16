@@ -59,15 +59,6 @@ const Body = () => {
           result?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle
             ?.restaurants ?? [];
 
-        // const updatedRestaurants = await fetchUpdate(
-        //   SWIGGY_UPDATE_API,
-        //   coordinates
-        // );
-        // console.log(
-        //   updatedRestaurants?.data?.cards?.[0]?.card?.card?.gridElements
-        //     ?.infoWithStyle?.restaurants
-        // );
-
         setPlace(result?.data?.cards?.[2]?.card?.card?.title);
         setRestaurantsList(restaurants);
         setFilteredRestaurants(restaurants);

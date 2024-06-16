@@ -1,11 +1,17 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+
 import { IMG_URL, RATING_STAR } from "../utils/constants";
+import { addItemsToCart } from "../utils/cartSlice";
 
 const RestaurantMenuItem = (props) => {
   const { name, price, defaultPrice, description, imageId } = props?.details;
   const { rating, ratingCountV2 } = props?.details?.ratings?.aggregatedRating;
 
   const [showFullDescription, setShowFullDescription] = useState(false);
+
+  const dispatch = useDispatch();
+  const handleAddItemToCart = (item) => dispatch(addItemsToCart(item));
 
   const toggleDescription = () => {
     setShowFullDescription(!showFullDescription);
@@ -29,7 +35,7 @@ const RestaurantMenuItem = (props) => {
           <div className="pt-2 text-lg font-light">{description}</div>
         ) : (
           <div className="truncate pt-2 text-lg font-light">
-            {description.slice(0, 100)}
+            {description?.slice(0, 100)}
           </div>
         )}
         <span
@@ -42,7 +48,10 @@ const RestaurantMenuItem = (props) => {
 
       {/* Image */}
       <div className="h-24 md:h-36 w-28 md:w-40 relative flex-shrink-0">
-        <button className="font-bold text-lg uppercase text-green-600 absolute w-16 md:w-28 h-6 md:h-10 border-none bg-white rounded-lg -bottom-4 left-1/2 transform -translate-x-1/2 shadow-md transition-all duration-300 ease-in hover:bg-gray-300">
+        <button
+          onClick={() => handleAddItemToCart(props?.details)}
+          className="font-bold text-lg uppercase text-green-600 absolute w-16 md:w-28 h-6 md:h-10 border-none bg-white rounded-lg -bottom-4 left-1/2 transform -translate-x-1/2 shadow-md transition-all duration-300 ease-in hover:bg-gray-300"
+        >
           ADD
         </button>
 

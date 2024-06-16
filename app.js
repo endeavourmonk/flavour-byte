@@ -5,6 +5,8 @@ import ReactDOM from "react-dom/client";
 import Header from "./src/components/Header";
 import Body from "./src/components/Body";
 import Loading from "./src/components/Loading.js";
+import { Provider } from "react-redux";
+import { appStore } from "./src/utils/appStore.js";
 
 const About = lazy(() => import("./src/components/About.js"));
 const Contact = lazy(() => import("./src/components/Contact.js"));
@@ -14,10 +16,12 @@ const RestaurantMenu = lazy(() => import("./src/components/RestaurantMenu.js"));
 const AppLayout = () => {
   return (
     <StrictMode>
-      <div>
-        <Header />
-        <Outlet />
-      </div>
+      <Provider store={appStore}>
+        <div>
+          <Header />
+          <Outlet />
+        </div>
+      </Provider>
     </StrictMode>
   );
 };

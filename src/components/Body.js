@@ -101,7 +101,7 @@ const Body = () => {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row justify-between items-center p-4 mb-5">
+      <div className="mt-20 flex flex-col md:flex-row justify-between items-center p-4 mb-5">
         <button
           className="bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-700 mb-4 md:mb-0"
           onClick={handleFilterClick}

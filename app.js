@@ -10,6 +10,7 @@ import { appStore } from "./src/utils/appStore.js";
 
 const About = lazy(() => import("./src/components/About.js"));
 const Contact = lazy(() => import("./src/components/Contact.js"));
+const Cart = lazy(() => import("./src/components/Cart.js"));
 const Error = lazy(() => import("./src/components/Error.js"));
 const RestaurantMenu = lazy(() => import("./src/components/RestaurantMenu.js"));
 
@@ -19,9 +20,7 @@ const AppLayout = () => {
       <Provider store={appStore}>
         <div className="m-0 p-0">
           <Header />
-          <div className="mt-20">
-            <Outlet />
-          </div>
+          <Outlet />
         </div>
       </Provider>
     </StrictMode>
@@ -58,6 +57,14 @@ const appRouter = createBrowserRouter([
         element: (
           <Suspense fallback={<Loading />}>
             <RestaurantMenu />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/cart",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Cart />
           </Suspense>
         ),
       },

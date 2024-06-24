@@ -9,8 +9,7 @@ import SignalCellular4BarRoundedIcon from "@mui/icons-material/SignalCellular4Ba
 const Header = () => {
   const isOnline = useOnlineStatus();
   // subscribing to the store using selector
-  const cartItemsCount = useSelector((store) => store.cart.length);
-  console.log(useSelector((store) => store.cart));
+  const cartItemsCount = useSelector((store) => store.cart.totalItems);
 
   return (
     <header className="h-16 p-1 px-6 flex justify-between items-center shadow-sm fixed w-full bg-white z-30 top-0 left-0">

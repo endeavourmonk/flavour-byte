@@ -27,7 +27,7 @@ export default function Cart() {
             <h1 className="text-2xl font-bold">Cart</h1>
             <button
               onClick={handleClearCart}
-              className="bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-700"
+              className="bg-lightOrange text-white py-2 px-4 rounded cursor-pointer hover:bg-orange-500"
             >
               Clear Cart
             </button>

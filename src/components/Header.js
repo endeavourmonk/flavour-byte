@@ -29,7 +29,7 @@ const Header = () => {
           </li>
           <li className="inline-block mr-2">
             <Link
-              to="/menu"
+              to="/offers"
               className="text-gray-600 no-underline hover:text-orange-500"
             >
               Offers

@@ -86,7 +86,7 @@ const Body = () => {
       {/* Buttons and Input */}
       <div className="mt-20 w-4/5 mx-auto flex flex-col md:flex-row justify-between items-center mb-5">
         <button
-          className="w-full md:w-fit bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-700 mb-4 md:mb-0"
+          className="w-full md:w-fit bg-lightOrange text-white py-2 px-4 rounded cursor-pointer hover:bg-orange-500 mb-4 md:mb-0"
           onClick={handleFilterClick}
         >
           Top Rated
@@ -105,7 +105,7 @@ const Body = () => {
             className="p-2 border rounded border-gray-300 mr-1 focus:outline-none"
           />
           <button
-            className="bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-700"
+            className="bg-lightOrange text-white py-2 px-4 rounded cursor-pointer hover:bg-orange-500"
             onClick={handleSearchButtonClick}
           >
             Search

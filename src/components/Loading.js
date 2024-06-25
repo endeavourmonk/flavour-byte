@@ -1,8 +1,9 @@
-import DeliveryBoyGIF from "../assets/Delivery Boy.gif";
+// import DeliveryBoyGIF from "../assets/delivery-boy.gif";
+import DeliveryBoyGIF from "../assets/delivery_boy.gif";
 
 const Loading = () => {
   return (
-    <div className="flex justify-center items-center min-h-screen mt-20">
+    <div className="w-full flex justify-center items-center min-h-screen">
       <img
         className="w-full max-w-xs object-contain"
         alt="loading"

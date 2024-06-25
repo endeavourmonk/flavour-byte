@@ -53,7 +53,7 @@ const RestaurantMenuItem = (props) => {
       <div className="h-24 md:h-36 w-28 md:w-40 relative flex-shrink-0">
         <button
           onClick={() => handleAddItemToCart(props?.details)}
-          className="font-bold text-lg uppercase text-green-600 absolute w-16 md:w-28 h-6 md:h-10 border-none bg-white rounded-lg -bottom-4 left-1/2 transform -translate-x-1/2 shadow-md  hover:bg-gray-100 transition-transform duration-200 ease-in-out active:scale-95"
+          className="font-bold text:sm md:text-lg uppercase text-green-600 absolute w-16 md:w-28 h-6 md:h-10 border-none bg-white rounded md:rounded-lg -bottom-4 left-1/2 transform -translate-x-1/2 shadow-md  hover:bg-gray-100 transition-transform duration-200 ease-in-out active:scale-95"
         >
           ADD
         </button>

@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         lightGrey: "#e9ecee",
+        lightOrange: "#FC8019",
       },
       keyframes: {
         fadeIn: {

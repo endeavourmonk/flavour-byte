@@ -8,6 +8,7 @@ import Loading from "./src/components/Loading.js";
 import { Provider } from "react-redux";
 import { appStore } from "./src/utils/appStore.js";
 import useOnlineStatus from "./src/utils/useOnlineStatus.js";
+import Offer from "./src/components/Offer.js";
 
 const About = lazy(() => import("./src/components/About.js"));
 const Contact = lazy(() => import("./src/components/Contact.js"));
@@ -77,6 +78,14 @@ const appRouter = createBrowserRouter([
         element: (
           <Suspense fallback={<Loading />}>
             <Cart />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/offers",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Offer />
           </Suspense>
         ),
       },

@@ -1,5 +1,4 @@
 import emptyCart from "../assets/empty_cart.png";
-import emptyCartBW from "../assets/empty_cart_b&w.png";
 
 export default function EmptyCart() {
   return (

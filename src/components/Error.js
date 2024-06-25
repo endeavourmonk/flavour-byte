@@ -20,7 +20,7 @@ const Error = () => {
         <>
           <img className="block mx-auto h-96" alt="404" src={connectionError} />
           <Link to="/">
-            <button className="bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-700">
+            <button className="bg-lightOrange text-white py-2 px-4 rounded cursor-pointer hover:bg-orange-500">
               Home
             </button>
           </Link>

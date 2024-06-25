@@ -7,6 +7,7 @@ import Body from "./src/components/Body";
 import Loading from "./src/components/Loading.js";
 import { Provider } from "react-redux";
 import { appStore } from "./src/utils/appStore.js";
+import useOnlineStatus from "./src/utils/useOnlineStatus.js";
 
 const About = lazy(() => import("./src/components/About.js"));
 const Contact = lazy(() => import("./src/components/Contact.js"));
@@ -15,11 +16,22 @@ const Error = lazy(() => import("./src/components/Error.js"));
 const RestaurantMenu = lazy(() => import("./src/components/RestaurantMenu.js"));
 
 const AppLayout = () => {
+  const isOnline = useOnlineStatus();
+
   return (
     <StrictMode>
       <Provider store={appStore}>
         <div className="m-0 p-0">
           <Header />
+          {/* Handling offline */}
+          {!isOnline && (
+            <div className="mt-20 w-4/5 mx-auto bg-red-500 text-white p-4 rounded shadow-md">
+              <h2 className="text-xl text-center font-bold">You are offline</h2>
+              <p className="text-center">
+                Please check your internet connection.
+              </p>
+            </div>
+          )}
           <Outlet />
         </div>
       </Provider>

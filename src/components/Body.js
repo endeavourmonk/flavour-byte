@@ -2,14 +2,9 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import RestaurantCard, { withDiscount } from "./RestaurantCard";
 import ShimmerRestaurantCard from "./Shimmer";
+import restaurantsMock from "../mocks/restaurantsMock";
 import replaceLatLonResId from "../utils/replaceLatLonResId";
-import {
-  CORS_PROXY_API,
-  SWIGGY_API,
-  SWIGGY_UPDATE_API,
-  lat,
-  lon,
-} from "../utils/constants";
+import { CORS_PROXY_API, SWIGGY_API, lat, lon } from "../utils/constants";
 
 const fetchData = async (url) => {
   try {
@@ -22,23 +17,6 @@ const fetchData = async (url) => {
   }
 };
 
-const fetchUpdate = async (url, coordinates) => {
-  const response = await fetch(`${CORS_PROXY_API}/fetch?${url}`, {
-    method: "POST",
-    mode: "no-cors", // no-cors, *cors, same-origin
-    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: "same-origin", // include, *same-origin, omit
-    headers: {
-      "Content-Type": "application/json",
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    redirect: "follow", // manual, *follow, error
-    referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    body: JSON.stringify({ lat: coordinates[0], lng: coordinates[1] }), // body data type must match "Content-Type" header
-  });
-  return await response.json();
-};
-
 const Body = () => {
   const [loading, setLoading] = useState(true);
   const [restaurantsList, setRestaurantsList] = useState([]);
@@ -48,13 +26,17 @@ const Body = () => {
 
   const PromotedRestaurantCard = withDiscount(RestaurantCard);
 
-  // console.log("body");
   useEffect(() => {
     (async () => {
       try {
         const SWIGGY_RESTAURANTS_API = replaceLatLonResId(SWIGGY_API, lat, lon);
         const result = await fetchData(SWIGGY_RESTAURANTS_API);
         setLoading(false);
+
+        // If swiggy API fails or changed loading the mock data.
+        // const mockResult = restaurantsMock;
+        // setTimeout(() => setLoading(false), 1000);
+
         const restaurants =
           result?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle
             ?.restaurants ?? [];
@@ -100,10 +82,11 @@ const Body = () => {
   };
 
   return (
-    <>
-      <div className="mt-20 flex flex-col md:flex-row justify-between items-center p-4 mb-5">
+    <div className="w-full">
+      {/* Buttons and Input */}
+      <div className="mt-20 w-4/5 mx-auto flex flex-col md:flex-row justify-between items-center mb-5">
         <button
-          className="bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-700 mb-4 md:mb-0"
+          className="w-full md:w-fit bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-700 mb-4 md:mb-0"
           onClick={handleFilterClick}
         >
           Top Rated
@@ -119,7 +102,7 @@ const Body = () => {
               }
             }}
             placeholder="Search Restaurants..."
-            className="p-2 mr-2 hover:border-b"
+            className="p-2 border rounded border-gray-300 mr-1 focus:outline-none"
           />
           <button
             className="bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-700"
@@ -131,7 +114,7 @@ const Body = () => {
       </div>
 
       {loading ? (
-        <div className="w-4/5 mx-auto overflow-auto">
+        <div className="w-4/5 mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 items-start">
             {Array(5)
               .fill()
@@ -141,14 +124,14 @@ const Body = () => {
           </div>
         </div>
       ) : (
-        <div className="w-4/5 mx-auto overflow-auto">
+        <div className="w-4/5 mx-auto ">
           <h2 className="text-3xl font-light mb-2">{place}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 items-start">
             {RestaurantCards}
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

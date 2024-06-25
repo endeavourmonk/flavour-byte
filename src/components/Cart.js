@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CartItem from "./CartItem";
 import { clearCart } from "../utils/cartSlice";
 import EmptyCart from "./EmptyCart";
+import Bill from "./Bill";
 
 export default function Cart() {
   // Subscribing to the cart
@@ -21,22 +22,28 @@ export default function Cart() {
   return (
     <>
       {cartItems.length ? (
-        <div className="p-4 min-h-screen bg-lightGrey">
-          <div className="mt-20 w-3/4 mx-auto">
-            <div className=" bg-white">
-              <button
-                onClick={handleClearCart}
-                className="bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-700 mb-4 md:mb-0"
-              >
-                Clear Cart
-              </button>
-              {cartItems.map((item) => (
-                <CartItem key={item?.item?.id} details={item} />
-              ))}
+        <div className="mt-16 p-4 min-h-screen bg-lightGrey">
+          <div className="w-full md:w-4/5 mx-auto flex justify-between items-center mb-4">
+            <h1 className="text-2xl font-bold">Cart</h1>
+            <button
+              onClick={handleClearCart}
+              className="bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-700"
+            >
+              Clear Cart
+            </button>
+          </div>
+          <div className="w-full md:w-4/5 flex flex-col md:flex-row mx-auto">
+            {/* Items Card */}
+            <div className="w-full md:w-3/5 mx-auto md:mr-4">
+              <div className="bg-white">
+                {cartItems.map((item) => (
+                  <CartItem key={item?.item?.id} details={item} />
+                ))}
+              </div>
             </div>
-            <div className="bg-white">
-              <div>Bill details</div>
-              <div>To Pay</div>
+            {/* Bill Card */}
+            <div className="bg-white w-full md:w-2/5 mt-4 md:mt-0 md:ml-4">
+              <Bill cartItems={cartItems} />
             </div>
           </div>
         </div>

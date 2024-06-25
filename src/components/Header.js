@@ -1,13 +1,9 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import useOnlineStatus from "../utils/useOnlineStatus";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
-import SignalCellularNodataRoundedIcon from "@mui/icons-material/SignalCellularNodataRounded";
-import SignalCellular4BarRoundedIcon from "@mui/icons-material/SignalCellular4BarRounded";
 
 const Header = () => {
-  const isOnline = useOnlineStatus();
   // subscribing to the store using selector
   const cartItemsCount = useSelector((store) => store.cart.totalItems);
 
@@ -23,13 +19,6 @@ const Header = () => {
 
       <nav className="mt-5">
         <ul className="list-none p-0 text-lg font-semibold">
-          <li className="inline-block mr-2">
-            {isOnline ? (
-              <SignalCellular4BarRoundedIcon />
-            ) : (
-              <SignalCellularNodataRoundedIcon />
-            )}
-          </li>
           <li className="inline-block mr-2">
             <Link
               to="/"

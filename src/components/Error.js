@@ -1,5 +1,5 @@
 import { Link, useRouteError } from "react-router-dom";
-import connectionError from "../assets/Connection Error.gif";
+import { ERROR_GIF } from "../utils/constants";
 
 const Error = () => {
   const error = useRouteError();
@@ -18,7 +18,7 @@ const Error = () => {
     <div className="flex flex-col items-center justify-center h-screen w-screen">
       {error.status === 404 ? (
         <>
-          <img className="block mx-auto h-96" alt="404" src={connectionError} />
+          <img className="block mx-auto h-96" alt="404" src={ERROR_GIF} />
           <Link to="/">
             <button className="bg-lightOrange text-white py-2 px-4 rounded cursor-pointer hover:bg-orange-500">
               Home

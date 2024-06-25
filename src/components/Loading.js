@@ -1,5 +1,5 @@
 // import DeliveryBoyGIF from "../assets/delivery-boy.gif";
-import DeliveryBoyGIF from "../assets/delivery_boy.gif";
+import { DELIVERY_BOY_GIF } from "../utils/constants";
 
 const Loading = () => {
   return (
@@ -7,7 +7,7 @@ const Loading = () => {
       <img
         className="w-full max-w-xs object-contain"
         alt="loading"
-        src={DeliveryBoyGIF}
+        src={DELIVERY_BOY_GIF}
       />
     </div>
   );

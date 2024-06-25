@@ -1,11 +1,11 @@
-import emptyCart from "../assets/empty_cart.png";
+import { EMPTY_CART } from "../utils/constants";
 
 export default function EmptyCart() {
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center h-full animate-fadeIn">
       <div className="w-1/2 md:w-1/5 flex flex-col items-center">
         <p className="text-gray-600 text-2xl font-bold">Cart Empty</p>
-        <img src={emptyCart} alt="Empty Cart" className="h-auto my-8" />
+        <img src={EMPTY_CART} alt="Empty Cart" className="h-auto my-8" />
         <p className="text-gray-600 font-semibold text-xl">
           Your cart is empty.
         </p>

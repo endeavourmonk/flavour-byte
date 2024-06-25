@@ -6,9 +6,6 @@ export const CORS_PROXY_API = `https://cors-proxyy.vercel.app`;
 export const IMG_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
-export const RATING_STAR =
-  "https://cdn-icons-png.flaticon.com/512/14024/14024981.png";
-
 export const SWIGGY_API =
   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=&lng=";
 export const SWIGGY_RESTAURANT_MENU =
@@ -17,3 +14,16 @@ export const SWIGGY_UPDATE_API =
   "https://www.swiggy.com/dapi/restaurants/list/update";
 
 export const IP_BASE_API = "https://api.ipbase.com/v1/json/";
+
+// Assets
+export const RATING_STAR =
+  "https://cdn-icons-png.flaticon.com/512/14024/14024981.png";
+
+export const EMPTY_CART =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/2xempty_cart_yfxml0";
+
+export const DELIVERY_BOY_GIF =
+  "https://cdn.discordapp.com/attachments/1255191667368001597/1255192002509803530/delivery_boy.gif?ex=667c3c25&is=667aeaa5&hm=00461c8dfb7abe0045ff3325fd3a40bf79e1e25e59c940730f7064eec489c1b7&";
+
+export const ERROR_GIF =
+  "https://cdn.discordapp.com/attachments/1255191667368001597/1255192002023129209/Connection_Error.gif?ex=667c3c25&is=667aeaa5&hm=faee0555ba23301095469f1587b60eb5709de65b1add254d9ae68a3124089131&";

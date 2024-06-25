@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import RestaurantCard, { withDiscount } from "./RestaurantCard";
 import ShimmerRestaurantCard from "./Shimmer";
-import restaurantsMock from "../mocks/restaurantsMock";
+// import restaurantsMock from "../mocks/restaurantsMock";
 import replaceLatLonResId from "../utils/replaceLatLonResId";
 import { CORS_PROXY_API, SWIGGY_API, lat, lon } from "../utils/constants";
 

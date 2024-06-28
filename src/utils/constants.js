@@ -23,7 +23,7 @@ export const EMPTY_CART =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/2xempty_cart_yfxml0";
 
 export const DELIVERY_BOY_GIF =
-  "https://cdn.discordapp.com/attachments/1255191667368001597/1255192002509803530/delivery_boy.gif?ex=667e3665&is=667ce4e5&hm=fe3a1ab43deeece6e264aab52ec5f72427f3fb7fb98fe78d6f548abb1f132eda&";
+  "https://res.cloudinary.com/cloudimagestore-/image/upload/v1719550274/Assets/delivery_boy_j0u0qo.gif";
 
 export const ERROR_GIF =
-  "https://cdn.discordapp.com/attachments/1255191667368001597/1255192002023129209/Connection_Error.gif?ex=667e3665&is=667ce4e5&hm=b3059fca5c01f94f5af36f9b4da74588b759ca486095b6aea52635d3432d8a8f&";
+  "https://res.cloudinary.com/cloudimagestore-/image/upload/v1719550275/Assets/Connection_Error_jbzqkt.gif";

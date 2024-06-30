@@ -4,8 +4,6 @@ FlavourByte is a single-page application (SPA) frontend that provides a user-fri
 
 [Demo Video](https://www.youtube.com/watch?v=XR5d_3MwkqI)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XR5d_3MwkqI?si=NSuM4JvVQ-udXgtB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
 ## Features
 
 - **Dynamic Routing**: Seamless navigation between different sections of the app, such as browsing restaurants, viewing menus, and managing carts.

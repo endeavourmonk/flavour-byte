@@ -116,7 +116,7 @@ const Body = () => {
       {loading ? (
         <div className="w-4/5 mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 items-start">
-            {Array(5)
+            {Array(8)
               .fill()
               .map((_, i) => (
                 <ShimmerRestaurantCard key={i} />

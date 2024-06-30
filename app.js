@@ -20,23 +20,23 @@ const AppLayout = () => {
   const isOnline = useOnlineStatus();
 
   return (
-    <StrictMode>
-      <Provider store={appStore}>
-        <div className="m-0 p-0">
-          <Header />
-          {/* Handling offline */}
-          {!isOnline && (
-            <div className="mt-20 w-4/5 mx-auto bg-red-500 text-white p-4 rounded shadow-md">
-              <h2 className="text-xl text-center font-bold">You are offline</h2>
-              <p className="text-center">
-                Please check your internet connection.
-              </p>
-            </div>
-          )}
-          <Outlet />
+    // <StrictMode>
+    <Provider store={appStore}>
+      {/* <div className="m-0 p-0"> */}
+
+      <Header />
+
+      {/* Handling offline */}
+      {!isOnline && (
+        <div className="mt-20 w-4/5 mx-auto bg-red-500 text-white p-4 rounded shadow-md">
+          <h2 className="text-xl text-center font-bold">You are offline</h2>
+          <p className="text-center">Please check your internet connection.</p>
         </div>
-      </Provider>
-    </StrictMode>
+      )}
+      <Outlet />
+      {/* </div> */}
+    </Provider>
+    // </StrictMode>
   );
 };
 
